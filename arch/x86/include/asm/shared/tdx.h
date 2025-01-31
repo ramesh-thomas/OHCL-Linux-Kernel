@@ -16,6 +16,7 @@
 #define TDX_GET_REPORT			4
 #define TDX_ACCEPT_PAGE			6
 #define TDX_WR				8
+#define TDG_VP_ENTER			25
 
 /* TDCS fields. To be used by TDG.VM.WR and TDG.VM.RD module calls */
 #define TDCS_NOTIFY_ENABLES		0x9100000000000010
@@ -27,6 +28,30 @@
 #define TDVMCALL_STATUS_RETRY		1
 
 #ifndef __ASSEMBLY__
+
+/*
+ * Used in __tdcall*() to gather the input/output registers' values of the
+ * TDCALL instruction when requesting services from the TDX module. This is a
+ * software only structure and not part of the TDX module/VMM ABI
+ */
+struct tdx_module_args {
+        /* callee-clobbered */
+        u64 rcx;
+        u64 rdx;
+        u64 r8;
+        u64 r9;
+        /* extra callee-clobbered */
+        u64 r10;
+        u64 r11;
+        /* callee-saved + rdi/rsi */
+        u64 r12;
+        u64 r13;
+        u64 r14;
+        u64 r15;
+        u64 rbx;
+        u64 rdi;
+        u64 rsi;
+};
 
 /*
  * Used in __tdx_hypercall() to pass down and get back registers' values of
@@ -48,6 +73,8 @@ struct tdx_hypercall_args {
 	u64 rbx;
 	u64 rdx;
 };
+
+u64 __tdg_vp_enter(struct tdx_module_args *args);
 
 /* Used to request services from the VMM */
 u64 __tdx_hypercall(struct tdx_hypercall_args *args);

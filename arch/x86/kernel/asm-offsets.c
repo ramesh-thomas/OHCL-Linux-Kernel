@@ -75,6 +75,21 @@ static void __used common(void)
 	OFFSET(TDX_MODULE_r10, tdx_module_output, r10);
 	OFFSET(TDX_MODULE_r11, tdx_module_output, r11);
 
+        BLANK();
+        OFFSET(TDX_MODULE_ARGS_rcx, tdx_module_args, rcx);
+        OFFSET(TDX_MODULE_ARGS_rdx, tdx_module_args, rdx);
+        OFFSET(TDX_MODULE_ARGS_r8,  tdx_module_args, r8);
+        OFFSET(TDX_MODULE_ARGS_r9,  tdx_module_args, r9);
+        OFFSET(TDX_MODULE_ARGS_r10, tdx_module_args, r10);
+        OFFSET(TDX_MODULE_ARGS_r11, tdx_module_args, r11);
+        OFFSET(TDX_MODULE_ARGS_r12, tdx_module_args, r12);
+        OFFSET(TDX_MODULE_ARGS_r13, tdx_module_args, r13);
+        OFFSET(TDX_MODULE_ARGS_r14, tdx_module_args, r14);
+        OFFSET(TDX_MODULE_ARGS_r15, tdx_module_args, r15);
+        OFFSET(TDX_MODULE_ARGS_rbx, tdx_module_args, rbx);
+        OFFSET(TDX_MODULE_ARGS_rdi, tdx_module_args, rdi);
+        OFFSET(TDX_MODULE_ARGS_rsi, tdx_module_args, rsi);
+
 	BLANK();
 	OFFSET(TDX_HYPERCALL_r8,  tdx_hypercall_args, r8);
 	OFFSET(TDX_HYPERCALL_r9,  tdx_hypercall_args, r9);
